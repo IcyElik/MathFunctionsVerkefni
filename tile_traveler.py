@@ -31,6 +31,9 @@ def move(direct, pos_col, pos_row):
         elif (pos_col == 1 and pos_row == 2) or (pos_col == 3 and pos_row == 2):
             pos_row += 1
             return (pos_col, pos_row)
+        else:
+            print("Not a valid input!")
+            return pos_col, pos_row
     elif direct == "s":
         if (pos_col == 1 and pos_row == 2) or (pos_col == 3 and pos_row == 2):
             pos_row -= 1
@@ -41,6 +44,9 @@ def move(direct, pos_col, pos_row):
         elif (pos_col == 3 and pos_row == 3) or (pos_col == 2 and pos_row == 2):
             pos_row -= 1
             return (pos_col, pos_row)
+        else:
+            print("Not a valid input!")
+            return pos_col, pos_row
     elif direct == "e":
         if (pos_col == 1 and pos_row == 3):
             pos_col += 1
@@ -48,6 +54,9 @@ def move(direct, pos_col, pos_row):
         elif (pos_col == 2 and pos_row == 3):
             pos_col += 1
             return (pos_col, pos_row)
+        else:
+            print("Not a valid input!")
+            return pos_col, pos_row
     elif direct == "w":
         if (pos_col == 2 and pos_row == 3):
             pos_col -= 1
@@ -55,6 +64,9 @@ def move(direct, pos_col, pos_row):
         elif (pos_col == 3 and pos_row == 3) or (pos_col == 2 and pos_row == 2):
             pos_col -= 1
             return (pos_col, pos_row)
+        else:
+            print("Not a valid input!")
+            return pos_col, pos_row
     else:
         print("Not a valid input!")
         return pos_col, pos_row
