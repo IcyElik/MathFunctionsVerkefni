@@ -5,44 +5,71 @@
 # func move(direction) and call func moves with new position (player pos_row pos_col)
 # when player enters pos_col = 3 and pos_row= 1
 
-def directions(possition):
+def directions(pos_col, pos_row):
     """
     returns where the player can go
     """
     valid_direction = ""
-    if  possition == 1.1 or possition == 2.1:
+    if  (pos_col == 1 and pos_row == 1) or (pos_col == 2 and pos_row == 1):
         valid_direction = "(n)orth"
-    elif possition == 1.2 or possition == 3.2:
+    elif (pos_col == 1 and pos_row == 2) or (pos_col == 3 and pos_row == 2):
         valid_direction = "(n)orth, (s)outh"
-    elif possition == 1.3:
+    elif (pos_col == 1 and pos_row == 3):
         valid_direction = "(s)outh, (e)ast"
-    elif possition == 2.3:
+    elif (pos_col == 2 and pos_row == 3):
         valid_direction = "(e)ast, (w)est"
-    elif possition == 3.3 or possition == 2.2:
+    elif (pos_col == 3 and pos_row == 3) or (pos_col == 2 and pos_row == 2):
         valid_direction = "(w)est, (s)outh"
     return valid_direction
 
-def move(direct,possition):
+def move(direct, pos_col, pos_row):
     direct = direct.lower()
     if direct == "n":
-        possition += 0.1
+        if (pos_col == 1 and pos_row == 1) or (pos_col == 2 and pos_row == 1):
+            pos_row += 1
+            return (pos_col, pos_row)
+        elif (pos_col == 1 and pos_row == 2) or (pos_col == 3 and pos_row == 2):
+            pos_row += 1
+            return (pos_col, pos_row)
     elif direct == "s":
-        possition -= 0.1
+        if (pos_col == 1 and pos_row == 2) or (pos_col == 3 and pos_row == 2):
+            pos_row -= 1
+            return (pos_col, pos_row)
+        elif (pos_col == 1 and pos_row == 3):
+            pos_row -= 1
+            return (pos_col, pos_row)
+        elif (pos_col == 3 and pos_row == 3) or (pos_col == 2 and pos_row == 2):
+            pos_row -= 1
+            return (pos_col, pos_row)
     elif direct == "e":
-        possition += 1.0
+        if (pos_col == 1 and pos_row == 3):
+            pos_col += 1
+            return (pos_col, pos_row)
+        elif (pos_col == 2 and pos_row == 3):
+            pos_col += 1
+            return (pos_col, pos_row)
     elif direct == "w":
-        possition -= 1.0
-    return round(possition, 1)
+        if (pos_col == 2 and pos_row == 3):
+            pos_col -= 1
+            return (pos_col, pos_row)
+        elif (pos_col == 3 and pos_row == 3) or (pos_col == 2 and pos_row == 2):
+            pos_col -= 1
+            return (pos_col, pos_row)
+    else:
+        print("Not a valid input!")
+        return pos_col, pos_row
+
     """ 
     moves the player and returns new position 
     """
 # Main program
 
-possition = 1.1
+pos_col = 1
+pos_row = 1
 
-while possition != 3.1:
-    moves = directions(possition)
+while pos_col != 3 or pos_row != 1:
+    moves = directions(pos_col, pos_row)
     print("You can travel: " + moves)
     move_pos = input("Direction: ")
-    possition = move(move_pos, possition)
+    pos_col, pos_row = move(move_pos, pos_col, pos_row)
 print("Victory!")
