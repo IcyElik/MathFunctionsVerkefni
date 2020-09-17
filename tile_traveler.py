@@ -5,7 +5,7 @@
 # func move(direction) and call func moves with new position (player pos_row pos_col)
 # when player enters pos_col = 3 and pos_row= 1
 
-def directions(column, row):
+def directions(possition):
     """
     returns where the player can go
     """
@@ -20,27 +20,29 @@ def directions(column, row):
         valid_direction = "(e)ast, (w)est"
     elif possition == 3.3 or possition == 2.2:
         valid_direction = "(w)est, (s)outh"
-    else:
-        #victory
     return valid_direction
 
-def move(direction,possition):
-    if direction == n or direction == N:
+def move(direct,possition):
+    direct = direct.lower()
+    if direct == "n":
         possition += 0.1
-    elif direction == s or direction == S:
+    elif direct == "s":
         possition -= 0.1
-    elif direction == e or direction == E:
+    elif direct == "e":
         possition += 1.0
-    elif direction == w or direction == W:
+    elif direct == "w":
         possition -= 1.0
-    return possition 
+    return round(possition, 1)
     """ 
     moves the player and returns new position 
     """
 # Main program
 
-possition = "1,1"
+possition = 1.1
 
-while pos_col != 3 and pos_row != 1:
-    where_to_go = str(input())
-    
+while possition != 3.1:
+    moves = directions(possition)
+    print("You can travel: " + moves)
+    move_pos = input("Direction: ")
+    possition = move(move_pos, possition)
+print("Victory!")
